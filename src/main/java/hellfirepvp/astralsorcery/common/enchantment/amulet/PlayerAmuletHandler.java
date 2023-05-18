@@ -16,6 +16,7 @@ import hellfirepvp.astralsorcery.common.registry.RegistryEnchantments;
 import hellfirepvp.astralsorcery.common.util.data.Tuple;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -72,11 +73,11 @@ public class PlayerAmuletHandler implements ITickHandler {
     @SubscribeEvent
     public void onItemDrop (ItemTossEvent Event)
     {
+        EntityItem itemEntity = Event.getEntityItem();
         if (itemEntity != null) {
             ItemStack stack = itemEntity.getItem();
-            EnchantmentUpgradeHelper.removeAmuletOwner(stack)
+            EnchantmentUpgradeHelper.removeAmuletOwner(stack);
         }
-    }
     }
 
     private void applyAmuletTags(EntityPlayer player) {
