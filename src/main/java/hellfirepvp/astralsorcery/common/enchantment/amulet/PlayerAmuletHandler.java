@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
 
 import java.util.EnumSet;
 
@@ -66,6 +67,16 @@ public class PlayerAmuletHandler implements ITickHandler {
                 e.onWornTick(client, player, max);
             }
         }
+    }
+
+    @SubscribeEvent
+    public void onItemDrop (ItemTossEvent Event)
+    {
+        if (itemEntity != null) {
+            ItemStack stack = itemEntity.getItem();
+            EnchantmentUpgradeHelper.removeAmuletOwner(stack)
+        }
+    }
     }
 
     private void applyAmuletTags(EntityPlayer player) {

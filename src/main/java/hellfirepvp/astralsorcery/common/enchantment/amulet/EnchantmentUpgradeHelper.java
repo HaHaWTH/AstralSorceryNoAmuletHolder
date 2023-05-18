@@ -260,7 +260,7 @@ public class EnchantmentUpgradeHelper {
         cap.setHolderUUID(wearer.getUniqueID());
     }
 
-    private static void removeAmuletOwner(ItemStack stack) {
+    public static void removeAmuletOwner(ItemStack stack) {
         if(stack.isEmpty() || !stack.hasCapability(AmuletHolderCapability.CAPABILITY_AMULET_HOLDER, null)) {
             return;
         }
